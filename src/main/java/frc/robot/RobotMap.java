@@ -28,6 +28,10 @@ public class RobotMap {
   public static final int leftMotor1Port = 2;
   public static final int leftMotor2Port = 3;
   public static final int intakeMotorPort = 4;
+  public static final int carriageLiftPort = 5;
+  
+  // PDP Channel Currents
+  public static final int intakeCurrent = 4;
 
   // Constants
   public static final double DRIVE_THROTTLE_SMOOTH_CONSTANT = 0.06;
@@ -46,6 +50,8 @@ public class RobotMap {
   public static final int driver_Y_button = 4;
   public static final int driver_LB_button = 5;
   public static final int driver_RB_button = 6;
+  public static final int driver_Back_button = 7;
+  public static final int driver_Start_button = 8;
 
   // Operator
   public static final int operator_A_button = 1;
@@ -55,9 +61,6 @@ public class RobotMap {
   public static final int operator_LB_button = 5;
   public static final int operator_RB_button = 6;
 
-
-  // If you are using multiple modules, make sure to define both the port
-  // number and the module. For example you with a rangefinder:
-  // public static int rangefinderPort = 1;
-  // public static int rangefinderModule = 1;
+  // Limit Switches
+  public static final int intakeLimitPort = 0;
 }

@@ -7,22 +7,18 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import frc.robot.RobotMap;
-import frc.robot.commands.IntakeRollerOffCommand;
 
-public class IntakeSubsystem extends Subsystem {
-
-  public Spark intakeMotor = new Spark(4);
-  public DigitalInput intakeLimit = new DigitalInput(RobotMap.intakeLimitPort); 
+public class CarriageSubsystem extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
+
+  public Spark carriageLiftMotor = new Spark(5);
 
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
-    setDefaultCommand(new IntakeRollerOffCommand());
+    // setDefaultCommand(new MySpecialCommand());
   }
 }

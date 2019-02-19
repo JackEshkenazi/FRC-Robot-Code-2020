@@ -10,10 +10,10 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class IntakeRollerIntakeCommand extends Command {
-  public IntakeRollerIntakeCommand() {
+public class CarriageUpCommand extends Command {
+  public CarriageUpCommand() {
     // Use requires() here to declare subsystem dependencies
-    requires(Robot.intake);
+    requires(Robot.carriage);
   }
 
   // Called just before this Command runs the first time
@@ -24,12 +24,7 @@ public class IntakeRollerIntakeCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    //double current = Robot.pdp.getCurrent(RobotMap.intakeCurrent);
-    if (Robot.intake.intakeLimit.get()) {
-      Robot.intake.intakeMotor.set(-0.25);
-    } else {
-      Robot.intake.intakeMotor.set(-0.6);
-    }
+    Robot.carriage.carriageLiftMotor.set(1.0);
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -41,6 +36,7 @@ public class IntakeRollerIntakeCommand extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    Robot.carriage.carriageLiftMotor.set(0.0);
   }
 
   // Called when another command which requires one or more of the same

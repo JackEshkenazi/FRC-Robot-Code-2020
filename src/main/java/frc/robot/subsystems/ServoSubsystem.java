@@ -12,8 +12,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.commands.HatchStowCommand;
 
 public class ServoSubsystem extends Subsystem {
-  public Servo leftServo = new Servo(5);
-  public Servo rightServo = new Servo(6);
+  public Servo leftServo = new Servo(6);
+  public Servo rightServo = new Servo(7);
 
   @Override
   public void initDefaultCommand() {

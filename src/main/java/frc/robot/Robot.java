@@ -7,11 +7,13 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.subsystems.CarriageSubsystem;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.PneumaticsSubsystem;
@@ -29,19 +31,22 @@ public class Robot extends TimedRobot {
   public static PneumaticsSubsystem pneumatics = new PneumaticsSubsystem();
   public static ServoSubsystem servos = new ServoSubsystem();
   public static IntakeSubsystem intake = new IntakeSubsystem();
+  public static CarriageSubsystem carriage = new CarriageSubsystem();
+  public static PowerDistributionPanel pdp = new PowerDistributionPanel();
   public static OI oi;
 
   Command autonomousCommand;
   SendableChooser<Command> chooser = new SendableChooser<>();
- 
+
   /**
-   * This function is run when the robot is first started up and should be
-   * used for any initialization code.
+   * This function is run when the robot is first started up and should be used
+   * for any initialization code.
    */
   @Override
   public void robotInit() {
     oi = new OI();
-    
+    //double current = pdp.getCurrent(RobotMap.intakeCurrent);
+
     // chooser.addObject("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", chooser);
   }

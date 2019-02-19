@@ -9,6 +9,8 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import frc.robot.commands.CarriageDownCommand;
+import frc.robot.commands.CarriageUpCommand;
 import frc.robot.commands.HatchIntakeCommand;
 import frc.robot.commands.HatchOuttakeCommand;
 import frc.robot.commands.IntakeCarriageInCommand;
@@ -39,6 +41,8 @@ public class OI {
   public JoystickButton hatchOut = new JoystickButton(driverStick, RobotMap.driver_Y_button);
   public JoystickButton spinIntake = new JoystickButton(driverStick, RobotMap.driver_LB_button);
   public JoystickButton outtakeCargo = new JoystickButton(driverStick, RobotMap.driver_RB_button);
+  public JoystickButton liftCarriage = new JoystickButton(driverStick, RobotMap.driver_Back_button);
+  public JoystickButton lowerCarriage = new JoystickButton(driverStick, RobotMap.driver_Start_button);
 
   public OI(){
     // Button Binding
@@ -48,6 +52,8 @@ public class OI {
     hatchOut.whenPressed(new HatchOuttakeCommand());
     spinIntake.whileHeld(new IntakeRollerIntakeCommand());
     outtakeCargo.whileHeld(new IntakeRollerOuttakeCommand());
+    liftCarriage.whileHeld(new CarriageUpCommand());
+    lowerCarriage.whileHeld(new CarriageDownCommand());
   }
 
   // Run the command while the button is being held down and interrupt it once

@@ -7,14 +7,14 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class HatchIntakeCommand extends Command {
-  public HatchIntakeCommand() {
+public class DeployRampCommand extends Command {
+  public DeployRampCommand() {
     // Use requires() here to declare subsystem dependencies
-    requires(Robot.servos);
+    requires(Robot.pneumatics);
   }
 
   // Called just before this Command runs the first time
@@ -25,10 +25,9 @@ public class HatchIntakeCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    //DriverStation.reportError("Hatch Intake", false);
-    Robot.servos.leftServo.setAngle(130.0);
-    Robot.servos.rightServo.setAngle(45.0);
-    end();
+    //if (Robot.oi.rampLock2.get()) {
+      Robot.pneumatics.ramp.set(Value.kForward);
+    //}
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -40,6 +39,12 @@ public class HatchIntakeCommand extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    if (!Robot.oi.rampLock1.get()) {
+      Robot.pneumatics.ramp.set(Value.kOff);
+    }
+    else {
+      Robot.pneumatics.ramp.set(Value.kReverse);
+    } 
   }
 
   // Called when another command which requires one or more of the same

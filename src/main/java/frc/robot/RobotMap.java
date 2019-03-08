@@ -19,7 +19,7 @@ public class RobotMap {
 
   // Operator Controller Ports
   public static final int driverStickPort = 0;
-  //public static final int operatorStickPort = 1;
+  public static final int operatorStickPort = 1;
   
 
   // Motor ports
@@ -60,6 +60,8 @@ public class RobotMap {
   public static final int operator_Y_button = 4;
   public static final int operator_LB_button = 5;
   public static final int operator_RB_button = 6;
+  public static final int operator_Back_button = 7;
+  public static final int operator_Start_button = 8;
 
   // Limit Switches
   public static final int intakeLimitPort = 0;

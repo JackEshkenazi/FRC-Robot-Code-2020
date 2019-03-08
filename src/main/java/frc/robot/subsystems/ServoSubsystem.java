@@ -9,7 +9,7 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import frc.robot.commands.HatchStowCommand;
+import frc.robot.commands.HatchIntakeCommand;
 
 public class ServoSubsystem extends Subsystem {
   public Servo leftServo = new Servo(6);
@@ -18,6 +18,6 @@ public class ServoSubsystem extends Subsystem {
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
-    setDefaultCommand(new HatchStowCommand());
+    setDefaultCommand(new HatchIntakeCommand());
   }
 }

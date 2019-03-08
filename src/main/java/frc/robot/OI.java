@@ -11,38 +11,35 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.CarriageDownCommand;
 import frc.robot.commands.CarriageUpCommand;
+import frc.robot.commands.DeployRampCommand;
 import frc.robot.commands.HatchIntakeCommand;
 import frc.robot.commands.HatchOuttakeCommand;
 import frc.robot.commands.IntakeCarriageInCommand;
 import frc.robot.commands.IntakeCarriageOutCommand;
 import frc.robot.commands.IntakeRollerIntakeCommand;
 import frc.robot.commands.IntakeRollerOuttakeCommand;
-
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-  //// CREATING BUTTONS
-  // One type of button is a joystick button which is any button on a
-  //// joystick.
-  // You create one by telling it which joystick it's on and which button
-  // number it is.
 
   // Joysticks
   public Joystick driverStick = new Joystick(RobotMap.driverStickPort);
-  //public Joystick operatorStick = new Joystick(RobotMap.operatorStickPort);
+  public Joystick operatorStick = new Joystick(RobotMap.operatorStickPort);
 
 
   // Buttons
-  public JoystickButton intakeCarriageOut = new JoystickButton(driverStick, RobotMap.driver_A_button);
-  public JoystickButton intakeCarriageIn = new JoystickButton(driverStick, RobotMap.driver_B_button);
-  public JoystickButton hatchIn = new JoystickButton(driverStick, RobotMap.driver_X_button);
-  public JoystickButton hatchOut = new JoystickButton(driverStick, RobotMap.driver_Y_button);
-  public JoystickButton spinIntake = new JoystickButton(driverStick, RobotMap.driver_LB_button);
+  public JoystickButton intakeCarriageOut = new JoystickButton(operatorStick, RobotMap.operator_RB_button);
+  public JoystickButton intakeCarriageIn = new JoystickButton(operatorStick, RobotMap.operator_LB_button);
+  public JoystickButton hatchIn = new JoystickButton(operatorStick, RobotMap.operator_B_button);
+  public JoystickButton hatchOut = new JoystickButton(operatorStick, RobotMap.operator_X_button);
+  public JoystickButton spinIntake = new JoystickButton(driverStick, RobotMap.driver_LB_button);//changed from rb
   public JoystickButton outtakeCargo = new JoystickButton(driverStick, RobotMap.driver_RB_button);
-  public JoystickButton liftCarriage = new JoystickButton(driverStick, RobotMap.driver_Back_button);
-  public JoystickButton lowerCarriage = new JoystickButton(driverStick, RobotMap.driver_Start_button);
+  public JoystickButton rampLock1 = new JoystickButton(driverStick, RobotMap.operator_Start_button);
+  //public JoystickButton rampLock2 = new JoystickButton(driverStick, RobotMap.driver_LB_button);
+  public JoystickButton liftCarriage = new JoystickButton(operatorStick, RobotMap.operator_A_button);
+  public JoystickButton lowerCarriage = new JoystickButton(operatorStick, RobotMap.operator_Y_button);
 
   public OI(){
     // Button Binding
@@ -54,16 +51,6 @@ public class OI {
     outtakeCargo.whileHeld(new IntakeRollerOuttakeCommand());
     liftCarriage.whileHeld(new CarriageUpCommand());
     lowerCarriage.whileHeld(new CarriageDownCommand());
+    rampLock1.whileHeld(new DeployRampCommand());
   }
-
-  // Run the command while the button is being held down and interrupt it once
-  // the button is released.
-  // button.whileHeld(new ExampleCommand());
-
-
-
-  // Start the command when the button is released and let it run the command
-  // until it is finished as determined by it's isFinished method.
-  // button.whenReleased(new ExampleCommand());
-
 }

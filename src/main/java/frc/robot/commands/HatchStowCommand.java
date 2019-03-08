@@ -24,8 +24,8 @@ public class HatchStowCommand extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.servos.leftServo.setAngle(0.0);
-    Robot.servos.rightServo.setAngle(170.0);
+    Robot.servos.leftServo.setAngle(30.0);
+    Robot.servos.rightServo.setAngle(140.0);
     end();
   }
 

@@ -49,7 +49,7 @@ public class DriveSubsystem extends Subsystem {
     }
 
     
-    drive.arcadeDrive(throttlePower, yawPower);
+    drive.arcadeDrive(throttlePower, yaw);
   }
 
 

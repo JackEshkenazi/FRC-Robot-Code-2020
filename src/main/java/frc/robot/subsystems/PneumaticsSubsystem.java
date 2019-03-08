@@ -15,6 +15,7 @@ import frc.robot.commands.IntakeCarriageOffCommand;
 public class PneumaticsSubsystem extends Subsystem {
   public Compressor c = new Compressor(0);
   public DoubleSolenoid intake = new DoubleSolenoid(0, 1);
+  public DoubleSolenoid ramp = new DoubleSolenoid(2, 3);
 
 
   @Override

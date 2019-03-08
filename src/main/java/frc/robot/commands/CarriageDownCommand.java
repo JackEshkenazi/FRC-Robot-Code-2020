@@ -13,7 +13,6 @@ import frc.robot.Robot;
 public class CarriageDownCommand extends Command {
   public CarriageDownCommand() {
     // Use requires() here to declare subsystem dependencies
-    requires(Robot.carriage);
   }
 
   // Called just before this Command runs the first time

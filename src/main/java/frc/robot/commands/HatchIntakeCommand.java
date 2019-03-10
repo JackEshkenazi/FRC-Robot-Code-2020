@@ -26,8 +26,8 @@ public class HatchIntakeCommand extends Command {
   @Override
   protected void execute() {
     //DriverStation.reportError("Hatch Intake", false);
-    Robot.servos.leftServo.setAngle(130.0);
-    Robot.servos.rightServo.setAngle(45.0);
+    Robot.servos.leftServo.setAngle(170.0);
+    Robot.servos.rightServo.setAngle(35.0);
     end();
   }
 

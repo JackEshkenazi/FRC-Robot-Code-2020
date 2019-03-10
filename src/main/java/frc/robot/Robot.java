@@ -19,6 +19,7 @@ import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.PneumaticsSubsystem;
 import frc.robot.subsystems.ServoSubsystem;
+import edu.wpi.first.cameraserver.*;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -56,6 +57,9 @@ public class Robot extends TimedRobot {
 
     pressure = (psiVoltage.getAverageVoltage() - 0.5) / 0.02;
     SmartDashboard.putNumber("Pressure Reading", pressure);
+
+    CameraServer.getInstance().startAutomaticCapture();
+
 
   }
 

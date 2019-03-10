@@ -14,7 +14,7 @@ import frc.robot.Robot;
 public class DeployRampCommand extends Command {
   public DeployRampCommand() {
     // Use requires() here to declare subsystem dependencies
-    requires(Robot.pneumatics);
+    requires(Robot.servos);
   }
 
   // Called just before this Command runs the first time
@@ -26,8 +26,10 @@ public class DeployRampCommand extends Command {
   @Override
   protected void execute() {
     //if (Robot.oi.rampLock2.get()) {
-      Robot.pneumatics.ramp.set(Value.kForward);
+      //Robot.pneumatics.ramp.set(Value.kForward);
     //}
+  Robot.servos.rampLockServo.setAngle(140);
+
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -39,12 +41,6 @@ public class DeployRampCommand extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    if (!Robot.oi.rampLock1.get()) {
-      Robot.pneumatics.ramp.set(Value.kOff);
-    }
-    else {
-      Robot.pneumatics.ramp.set(Value.kReverse);
-    } 
   }
 
   // Called when another command which requires one or more of the same

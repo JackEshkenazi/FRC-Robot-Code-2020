@@ -36,7 +36,7 @@ public class OI {
   public JoystickButton hatchOut = new JoystickButton(operatorStick, RobotMap.operator_X_button);
   public JoystickButton spinIntake = new JoystickButton(driverStick, RobotMap.driver_LB_button);//changed from rb
   public JoystickButton outtakeCargo = new JoystickButton(driverStick, RobotMap.driver_RB_button);
-  public JoystickButton rampLock1 = new JoystickButton(driverStick, RobotMap.operator_Start_button);
+  public JoystickButton rampLock1 = new JoystickButton(operatorStick, RobotMap.operator_Start_button);
   //public JoystickButton rampLock2 = new JoystickButton(driverStick, RobotMap.driver_LB_button);
   public JoystickButton liftCarriage = new JoystickButton(operatorStick, RobotMap.operator_A_button);
   public JoystickButton lowerCarriage = new JoystickButton(operatorStick, RobotMap.operator_Y_button);
@@ -48,9 +48,9 @@ public class OI {
     hatchIn.whenPressed(new HatchIntakeCommand());
     hatchOut.whenPressed(new HatchOuttakeCommand());
     spinIntake.whileHeld(new IntakeRollerIntakeCommand());
-    outtakeCargo.whileHeld(new IntakeRollerOuttakeCommand());
+    outtakeCargo.whileHeld(new IntakeRollerOuttakeCommand()); 
     liftCarriage.whileHeld(new CarriageUpCommand());
     lowerCarriage.whileHeld(new CarriageDownCommand());
-    rampLock1.whileHeld(new DeployRampCommand());
+    rampLock1.whenPressed(new DeployRampCommand());
   }
 }

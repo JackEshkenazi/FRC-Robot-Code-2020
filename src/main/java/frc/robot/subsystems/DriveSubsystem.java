@@ -28,7 +28,7 @@ public class DriveSubsystem extends Subsystem {
   public SpeedControllerGroup leftMotors = new SpeedControllerGroup(leftMotor1, leftMotor2);
 
   // Initializes the differential drive object
-  public DifferentialDrive drive = new DifferentialDrive(leftMotors, rightMotors);
+  public TankDrive drive = new TankDrive(leftMotors, rightMotors);
 
   // Initialize motor speeds
   double throttlePower = 0.0;

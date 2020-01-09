@@ -30,13 +30,7 @@ import edu.wpi.first.cameraserver.*;
  */
 public class Robot extends TimedRobot {
   public static DriveSubsystem drive = new DriveSubsystem();
-  public static PneumaticsSubsystem pneumatics = new PneumaticsSubsystem();
-  public static ServoSubsystem servos = new ServoSubsystem();
-  public static IntakeSubsystem intake = new IntakeSubsystem();
-  public static CarriageSubsystem carriage = new CarriageSubsystem();
   public static PowerDistributionPanel pdp = new PowerDistributionPanel();
-  public double pressure;
-  public AnalogInput psiVoltage = new AnalogInput(0);
 
   public static OI oi;
 
@@ -50,17 +44,6 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     oi = new OI();
-    //double current = pdp.getCurrent(RobotMap.intakeCurrent);
-
-    // chooser.addObject("My Auto", new MyAutoCommand());
-    SmartDashboard.putData("Auto mode", chooser);
-
-    pressure = (psiVoltage.getAverageVoltage() - 0.5) / 0.02;
-    SmartDashboard.putNumber("Pressure Reading", pressure);
-
-    CameraServer.getInstance().startAutomaticCapture();
-
-
   }
 
   /**
@@ -82,13 +65,10 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void disabledInit() {
-    pneumatics.c.stop();
   }
 
   @Override
   public void disabledPeriodic() {
-    pressure = (psiVoltage.getAverageVoltage() - 0.5) / 0.02;
-    SmartDashboard.putNumber("Pressure Reading", pressure);
     Scheduler.getInstance().run();
   }
 
@@ -106,10 +86,6 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousInit() {
     autonomousCommand = chooser.getSelected();
-    pneumatics.c.start();
-    pneumatics.c.setClosedLoopControl(true);
-    pressure = (psiVoltage.getAverageVoltage() - 0.5) / 0.02;
-    SmartDashboard.putNumber("Pressure Reading", pressure);
 
     /*
      * String autoSelected = SmartDashboard.getString("Auto Selector",
@@ -130,8 +106,6 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousPeriodic() {
     Scheduler.getInstance().run();
-    pressure = (psiVoltage.getAverageVoltage() - 0.5) / 0.02;
-    SmartDashboard.putNumber("Pressure Reading", pressure);
   }
 
   @Override
@@ -143,10 +117,6 @@ public class Robot extends TimedRobot {
     if (autonomousCommand != null) {
       autonomousCommand.cancel();
     }
-    pneumatics.c.start();
-    pneumatics.c.setClosedLoopControl(true);
-    pressure = (psiVoltage.getAverageVoltage() - 0.5) / 0.02;
-    SmartDashboard.putNumber("Pressure Reading", pressure);
   }
 
   /**
@@ -155,8 +125,6 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
-    pressure = (psiVoltage.getAverageVoltage() - 0.5) / 0.02;
-    SmartDashboard.putNumber("Pressure Reading", pressure);    
   }
 
   /**
